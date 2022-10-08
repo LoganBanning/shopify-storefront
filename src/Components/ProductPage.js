@@ -38,10 +38,47 @@ const ProductPage = ({shopifyClient}) => {
     .catch((err) => console.error(err))
   }
 
+  const updatedQuantityInCart = (lineItemId, quantity) => {
+    const checkoutId = checkout.id;
+    const lineItemsToUpdate = [{id: lineItemId, quantity: parseInt(quantity, 10)}];
+
+    return clientInformation.checkout.updateLineItems(checkoutId, lineItemsToUpdate)
+    .then(res => {
+      setCheckout(res);
+    })
+    .catch((err) => console.error(err));
+  }
+
+  const removeLineItemInCart = (lineItemId) => {
+    const checkoutId = checkout.id;
+
+    return clientInformation.checkout.removeLineItems(checkoutId, [lineItemId])
+    .then(res => {
+      setCheckout(res);
+    })
+    .catch((err) => console.error(err));
+  }
+
+  const handleCartClose = () => {
+    setIsCartOpen(false);
+  }
+
 
 
   return (
-    <div>Hello</div>
+    <div className='products-page'>
+      <header className='products-header'>
+        {!isCartOpen &&
+        <div className='product-view-cart-wrapper'>
+          <button className='product-view-cart' onClick={() => setIsCartOpen(true)}>Cart</button>
+          </div>
+          }
+          <div className='product-title'>
+            <h1>{shop.name}: Dime-Beauty-Products</h1>
+            <h2>{shop.description}</h2>
+          </div>
+      </header>
+    </div>
   )
 
 };
