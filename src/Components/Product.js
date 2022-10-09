@@ -3,14 +3,14 @@ import VariantSelector from './VariantSelector';
 
 const Product = (props) => {
   
-  let defaultOptionValues = {};
-  props.product.options.forEach((selector) => {
-    defaultOptionValues[selector.name] = selector.values[0].value;
-  });
   const [defaultOptionValues, setDefaultOptionValues] = useState({});
   const [selectedVariant, setSelectedVariant] = useState({});
   const [selectedVariantImage, setSelectedVariantImage] = useState('');
   const [selectedVariantQuantity, setSelectedVariantQuantity] = useState('');
+
+  props.product.options.forEach((selector) => {
+    setDefaultOptionValues(selector.values[0].value)
+  });
 
   const findImage = (images, variantId) => {
     const primary = images[0];
@@ -40,7 +40,7 @@ const Product = (props) => {
   let variantSelectors = this.props.product.options.map((option) => {
     return (
       <VariantSelector 
-      handleOptionChange={this.handleOptionChange}
+      handleOptionChange={handleOptionChange}
       key={option.id.toString()}
       option={option}
       />
@@ -54,7 +54,7 @@ const Product = (props) => {
       {variantSelectors}
       <label className='Product_option'>
         Quantity 
-        <input min='1' type='number' defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
+        <input min='1' type='number' defaultValue={variantQuantity} onChange={handleQuantityChange}></input>
       </label>
       <button className='Product_buy_button' onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
     </div>

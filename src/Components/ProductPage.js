@@ -2,30 +2,30 @@ import React, {useEffect, useState} from 'react';
 import Products from './Products';
 import Cart from './Cart';
 
-const ProductPage = ({shopifyClient}) => {
-  const [products, setProducts] = useState({});
+const ProductPage = ({shopifyClient}, props) => {
+  const [product, setProducts] = useState({});
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [shop, setShop] = useState({});
   const [checkout, setCheckout] = useState({ lineItems: []});
   
 
   useEffect(() => {
+    shopifyClient.checkout.create()
+    .then((res) => {
+      setCheckout(res)
+    })
+    .catch((err) => console.error(err))
+
       shopifyClient.product.fetchAll()
       .then((response) => setProducts(response))
       .catch((err) => console.error(err)) 
-
-      shopifyClient.checkout.create()
-      .then((res) => {
-        setCheckout(res)
-      })
-      .catch((err) => console.error(err))
 
       shopifyClient.shop.fetchInfo()
       .then((res) => {
         setShop(res)
       })
       .catch((err) => console.error(err))
-  }, [product, checkout, shop]);
+  }, [shopifyClient.product, shopifyClient.checkout, shopifyClient.shop]);
 
   const addVariantToCart = (variantId, quantity) => {
     setIsCartOpen(true);
@@ -81,8 +81,8 @@ const ProductPage = ({shopifyClient}) => {
           </div>
       </header>
       <Products
-      products={products}
-      client={this.props.client}
+      products={product}
+      client={props.client}
       addVariantToCart={addVariantToCart}
       />
       <Cart 

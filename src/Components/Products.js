@@ -2,11 +2,11 @@ import Product from './Product';
 
 const Products = (props) => {
 
-  let products = this.props.products.map((product) => {
+  let products = props.products.map((product) => {
     return (
       <Product
-      addVariantToCart={this.props.addVariantToCart}
-      client={this.props.client}
+      addVariantToCart={props.addVariantToCart}
+      client={props.client}
       key={product.id.toString()}
       product={product}
       />
