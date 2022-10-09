@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import Products from './Products';
+import Cart from './Cart';
 
 const ProductPage = ({shopifyClient}) => {
   const [products, setProducts] = useState({});
@@ -78,6 +80,18 @@ const ProductPage = ({shopifyClient}) => {
             <h2>{shop.description}</h2>
           </div>
       </header>
+      <Products
+      products={products}
+      client={this.props.client}
+      addVariantToCart={addVariantToCart}
+      />
+      <Cart 
+      checkout={checkout}
+      isCartOpen={isCartOpen}
+      handleCartClose={handleCartClose}
+      updatedQuantityInCart={updatedQuantityInCart}
+      removeLineItemInCart={removeLineItemInCart}
+      />
     </div>
   )
 

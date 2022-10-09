@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import VariantSelector from './VariantSelector';
 
 const Product = (props) => {
   
