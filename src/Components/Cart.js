@@ -1,16 +1,16 @@
 import LineItem from './LineItem';
 
-const Cart = (props) => {
+const Cart = ({isCartOpen, handleCartClose, updatedQuantityInCart, removeLineItemInCart, checkout}) => {
 
   const openCheckout = () => {
-    window.open(props.checkout.webUrl);
+    window.open(checkout.webUrl);
   }
 
-  let line_items = props.checkout.lineItems.map((line_item) => {
+  let line_items = checkout.lineItems.map((line_item) => {
     return (
       <LineItem
-      updateQuantityInCart={props.updateQuantityInCart}
-      removeLineItemInCart={props.removeLineItemInCart}
+      updatedQuantityInCart={updatedQuantityInCart}
+      removeLineItemInCart={removeLineItemInCart}
       key={line_item.id.toString()}
       line_item={line_item}
       />
@@ -18,11 +18,11 @@ const Cart = (props) => {
   });
 
   return (
-    <div className={`Cart ${this.props.isCartOpen ? 'Cart--open' : ''}`}>
+    <div className={`Cart ${isCartOpen ? 'Cart--open' : ''}`}>
       <header className='Cart__header'>
         <h2>Your Cart</h2>
         <button
-        onClick={this.props.handleCartClose}
+        onClick={handleCartClose}
         className='Cart__close'>
           x
         </button>
@@ -34,19 +34,19 @@ const Cart = (props) => {
         <div className='Cart-info clearfix'>
           <div className='Cart-into__total Cart-info__small'>Subtotal</div>
           <div className='Cart-info__pricing'>
-            <span className='pricing'>$ {props.checkout.subtotalPrice}</span>
+            <span className='pricing'>$ {checkout.subtotalPrice}</span>
           </div>
         </div>
         <div className="Cart-info clearfix">
             <div className="Cart-info__total Cart-info__small">Taxes</div>
             <div className="Cart-info__pricing">
-              <span className="pricing">$ {props.checkout.totalTax}</span>
+              <span className="pricing">$ {checkout.totalTax}</span>
             </div>
           </div>
           <div className="Cart-info clearfix">
             <div className="Cart-info__total Cart-info__small">Total</div>
             <div className="Cart-info__pricing">
-              <span className="pricing">$ {props.checkout.totalPrice}</span>
+              <span className="pricing">$ {checkout.totalPrice}</span>
             </div>
           </div>
           <button className="Cart__checkout button" onClick={openCheckout}>Checkout</button>

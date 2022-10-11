@@ -1,21 +1,19 @@
 import Product from './Product';
 
-const Products = (props) => {
+const Products = ({products, addVariantToCart, shopifyClient}) => {
 
-  let products = props.products.map((product) => {
+  return (
+    <div className='Product-wrapper'>
+      {products.map((product) => {
     return (
       <Product
-      addVariantToCart={props.addVariantToCart}
-      client={props.client}
+      addVariantToCart={addVariantToCart}
+      shopifyClient={shopifyClient}
       key={product.id.toString()}
       product={product}
       />
     )
-  })
-
-  return (
-    <div className='Product-wrapper'>
-      {products}
+  })}
     </div>
   );
 }

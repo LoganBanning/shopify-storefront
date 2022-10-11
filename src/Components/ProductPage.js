@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import Products from './Products';
 import Cart from './Cart';
 
 const ProductPage = ({shopifyClient}, props) => {
-  const [product, setProducts] = useState({});
+  const [products, setProducts] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [shop, setShop] = useState({});
   const [checkout, setCheckout] = useState({ lineItems: []});
@@ -17,7 +17,9 @@ const ProductPage = ({shopifyClient}, props) => {
     .catch((err) => console.error(err))
 
       shopifyClient.product.fetchAll()
-      .then((response) => setProducts(response))
+      .then((response) => {
+      setProducts(response)
+      })
       .catch((err) => console.error(err)) 
 
       shopifyClient.shop.fetchInfo()
@@ -32,9 +34,10 @@ const ProductPage = ({shopifyClient}, props) => {
 
     const lineItemsToAdd = [{variantId, quantity:parseInt(quantity, 10)}];
     const checkoutId = checkout.id;
-
-    return checkout.addLineItems(checkoutId, lineItemsToAdd)
+    return shopifyClient.checkout.addLineItems(checkoutId, lineItemsToAdd)
     .then(res => {
+      console.log('res', res)
+      console.log('shopifyclient checkout', shopifyClient.checkout.addManuelDiscount)
       setCheckout(res)
     })
     .catch((err) => console.error(err))
@@ -81,8 +84,8 @@ const ProductPage = ({shopifyClient}, props) => {
           </div>
       </header>
       <Products
-      products={product}
-      client={props.client}
+      products={products}
+      shopifyClient={shopifyClient}
       addVariantToCart={addVariantToCart}
       />
       <Cart 
