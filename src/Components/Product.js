@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import VariantSelector from './VariantSelector';
+import './Product.css';
 
 const Product = (props) => {
 
@@ -60,7 +61,7 @@ const Product = (props) => {
         Quantity 
         <input min='1' type='number' defaultValue={variantQuantity} onChange={handleQuantityChange}></input>
       </label>
-      <button className='Product_buy_button' onClick={() => props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
+      <button className='Product_buy_button' onClick={() => props.addVariantToCart(variant.id, variantQuantity)}>Add to Bundle</button>
     </div>
   );
 }

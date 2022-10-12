@@ -1,4 +1,5 @@
 import Product from './Product';
+import './Products.css';
 
 const Products = ({products, addVariantToCart, shopifyClient}) => {
 
