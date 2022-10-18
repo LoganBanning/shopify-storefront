@@ -4,5 +4,5 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center; 
-  margin: 10% 10% 10% 10%;
+  row-gap: 50px;
 }

@@ -56,7 +56,7 @@ const Product = (props) => {
       {props.product.images.length ? <img src={variantImage.src} alt={`${props.product.title} product shot`} /> : null}
       <h5 className='Product_title'>{props.product.title}</h5>
       <span className='Product_price'>${variant.price}</span>
-      {variantSelectors}
+      {/* {variantSelectors} */}
       <label className='Product_option'>
         Quantity 
         <input min='1' type='number' defaultValue={variantQuantity} onChange={handleQuantityChange}></input>

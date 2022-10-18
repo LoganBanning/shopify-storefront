@@ -1,4 +1,5 @@
 import LineItem from './LineItem';
+import './Cart.css';
 
 const Cart = ({isCartOpen, handleCartClose, updatedQuantityInCart, removeLineItemInCart, checkout}) => {
 
@@ -17,8 +18,11 @@ const Cart = ({isCartOpen, handleCartClose, updatedQuantityInCart, removeLineIte
     );
   });
 
+  if(!isCartOpen){
+    return null;
+  }
   return (
-    <div className={`Cart ${isCartOpen ? 'Cart--open' : ''}`}>
+    <div className='Cart-container'>
       <header className='Cart__header'>
         <h2>Your Cart</h2>
         <button

@@ -2,12 +2,12 @@ const LineItem = (props) => {
 
   const decrementQuantity = (lineItemId) => {
     const updatedQuantity = props.line_item.quantity - 1
-    props.updateQuantityInCart(lineItemId, updatedQuantity);
+    props.updatedQuantityInCart(lineItemId, updatedQuantity);
   }
 
   const incrementQuantity = (lineItemId) => {
     const updatedQuantity = props.line_item.quantity + 1
-    props.updateQuantityInCart(lineItemId, updatedQuantity);
+    props.updatedQuantityInCart(lineItemId, updatedQuantity);
   }
 
   return (
