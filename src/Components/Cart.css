@@ -1,9 +1,57 @@
 .Cart-container {
-  background-color: black;
+  background-color: #212529;
   color: white;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 10;
-  width: 40%;
+  width: 30%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.Cart__close:hover {
+  cursor: pointer;
+  background-color: #212529;
+  color: white;
+  border: none;
+}
+
+.Line-item-content-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+.Line-item-quantity-update {
+  margin: 5px 10px;
+}
+
+.Line-item-quantity-update:hover {
+  cursor: pointer;
+  background-color: #212529;
+  color: white;
+  border: none;
+}
+
+.Line-item-remove:hover {
+  cursor: pointer;
+  background-color: #212529;
+  color: white;
+  border: none;
+}
+
+.Cart-checkout-button:hover {
+  cursor: pointer;
+  background-color: #212529;
+  color: white;
+  border: none;
 }

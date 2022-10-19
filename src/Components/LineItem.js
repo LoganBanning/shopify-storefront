@@ -1,3 +1,5 @@
+import './LineItem.css';
+
 const LineItem = (props) => {
 
   const decrementQuantity = (lineItemId) => {
@@ -12,8 +14,8 @@ const LineItem = (props) => {
 
   return (
     <li className='Line-item'>
-      <div className='Line-item-img'>
-        {props.line_item.variant.image ? <img src={props.line_item.variant.image.src} alt={`${props.line_item.title} product shot`} /> : null}
+      <div>
+        {props.line_item.variant.image ? <img className='Line-item-img' src={props.line_item.variant.image.src} alt={`${props.line_item.title} product shot`} /> : null}
       </div>
       <div className='Line-item-content'>
         <div className='Line-item-content-row'>
@@ -31,7 +33,7 @@ const LineItem = (props) => {
           <button className='Line-item-quantity-update' onClick={() => incrementQuantity(props.line_item.id)}>+</button>
         </div>
         <span className='Line-item-price'>${(props.line_item.quantity * props.line_item.variant.price).toFixed(2)}</span>
-        <button className='Line-item-remove' onClick={() => props.removeLineItemInCart(props.line_item.id)}>x</button>
+        <button className='Line-item-remove' onClick={() => props.removeLineItemInCart(props.line_item.id)}>Remove</button>
           </div>
       </div>
     </li>

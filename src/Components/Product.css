@@ -9,7 +9,7 @@
   box-shadow: 5px 5px 29px -4px #000000;
 }
 
-img {
+.Product-image {
   width: 350px;
   height: 350px;
   border-top-left-radius: 8px;
@@ -17,7 +17,7 @@ img {
   margin-top: 0;
 }
 
-h5 {
+.Product-title {
   font-weight: bold;
   font-size: 15px;
 }

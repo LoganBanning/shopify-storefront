@@ -22,13 +22,13 @@ const Cart = ({isCartOpen, handleCartClose, updatedQuantityInCart, removeLineIte
     return null;
   }
   return (
-    <div className='Cart-container'>
+    <div className='Cart-container' onWheel={(e) => this.wheel(e)} >
       <header className='Cart__header'>
         <h2>Your Cart</h2>
         <button
         onClick={handleCartClose}
         className='Cart__close'>
-          x
+          Close Cart
         </button>
       </header>
       <ul className='Cart__line-items'>
@@ -53,7 +53,7 @@ const Cart = ({isCartOpen, handleCartClose, updatedQuantityInCart, removeLineIte
               <span className="pricing">$ {checkout.totalPrice}</span>
             </div>
           </div>
-          <button className="Cart__checkout button" onClick={openCheckout}>Checkout</button>
+          <button className="Cart-checkout-button" onClick={openCheckout}>Checkout</button>
       </footer>
     </div>
   )

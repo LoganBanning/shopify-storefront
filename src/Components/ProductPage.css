@@ -1,0 +1,16 @@
+.product-view-cart {
+  background-color: #212529;
+  color: white;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 8px;
+  position: absolute;
+  right: 20px;
+}
+
+.product-view-cart:hover {
+  cursor: pointer;
+  width: 110px;
+  height: 35px;
+}
