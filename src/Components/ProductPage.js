@@ -33,7 +33,6 @@ const ProductPage = ({shopifyClient}, props) => {
   }, [shopifyClient.product, shopifyClient.checkout, shopifyClient.shop]);
 
   const addVariantToCart = (variantId, quantity) => {
-    setIsCartOpen(true);
 
     const lineItemsToAdd = [{variantId, quantity:parseInt(quantity, 10)}];
     const checkoutId = checkout.id;
@@ -100,7 +99,7 @@ const ProductPage = ({shopifyClient}, props) => {
           <button className='product-view-cart' onClick={() => setIsCartOpen(!isCartOpen)}>Cart</button>
           </div>
           <div className='product-title'>
-            <h1>{shop.name}: Dime-Beauty-Products</h1>
+            <h1>{shop.name}: Dime Beauty Products</h1>
             <h2>{shop.description}</h2>
           </div>
       </header>
